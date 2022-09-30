@@ -3,7 +3,7 @@
 namespace {
 
 QString secureHash(const QString &group, const QString &hash) {
-    QString s = group.toUpper() + hash.midRef(group.length()) + hash + group.rightRef(1);
+    QString s = group.toUpper() + hash.mid(group.length()) + hash + group.right(1);
     return QCryptographicHash::hash(s.toUtf8(), QCryptographicHash::Sha1).toHex();
 }
 
@@ -25,7 +25,7 @@ SharedCache::SharedCache(QObject *parent) : QObject(parent) {
 
 HttpReply *SharedCache::value(const QString &key) {
     QString url = baseUrl + group + QLatin1Char('/') + key.at(0) + QLatin1Char('/') + key.at(1) +
-                  QLatin1Char('/') + key.midRef(2);
+                  QLatin1Char('/') + key.mid(2);
     return http.get(url);
 }
 
