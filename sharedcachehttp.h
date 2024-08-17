@@ -40,11 +40,6 @@ public:
     int statusCode() const { return -1; }
     QByteArray body() const { return QByteArray(); }
 
-signals:
-    void data(const QByteArray &bytes);
-    void error(QString message);
-    void finished(const HttpReply &reply);
-
 private:
     SharedCacheHttp &chttp;
     Http &http;
